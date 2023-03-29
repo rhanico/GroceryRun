@@ -1,6 +1,7 @@
 * {
     padding:0;
     margin:0;
+    box-sizing: border-box;
     
 }
 
@@ -27,6 +28,12 @@ img {
 
 
 
+.mainNavbar{
+    width: 100%;
+    padding-top: 20px;
+}
+
+
 
 nav ul{
     list-style: none;
@@ -34,8 +41,12 @@ nav ul{
     margin: 0;
 
 }
+
+
 nav li {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 
 }
 na a {
@@ -44,3 +55,26 @@ na a {
     width: 33.33%;
 
 }
+
+
+#welcomeBanner {
+    background-color: whitesmoke;
+    display: flexbox;
+    
+}
+
+#bannercontent h3 img {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.bannerImg {
+    width: 10%;
+    height:auto;
+}
+
+h3 {
+  
+}
+
