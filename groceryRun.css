@@ -7,6 +7,7 @@
 
 body {
     background-color: #f8c02e;
+    position: relative;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -22,14 +23,20 @@ body {
 }
 
 img {
-    width: 50%;
+    width: 60%;
     height: auto;
+}
+
+#mainLogo {
+    width: 100%;
+    height: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .mainNavbar{
     display: inline;
     background-color: beige;
-    padding: 50px, 50px, 100, 50px;
 }
 
 nav ul {
@@ -42,38 +49,42 @@ ul li {
     list-style-type: none;
 }
 
-.divLi {
-    display: inline-flex;
-    background-color: beige;
-}
-
 a {
     text-decoration: none;
     color: black;
 }
 
+        /* welcome banner */
 
-/*  WELCOME BANNER STYLE  */
 
-.welcomeBanner {
+#welcomeBanner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    background-color: whitesmoke;
+}
+
+.bannerTextImg{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 
 }
 
-.bannerContent {
-
+#bannerTextImg, h3{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1em;
 }
 
-.textAndImg {
-  display: flex;
-  align-items: center;
-
+#bannerTextBanner, #imgBanner {
+    width: 40px;
 }
-
-.textAndImg img {
-    height: 2.2rem;
-    margin-left: 1rem;
-    padding-right: 0px;
-}
-
-
 
