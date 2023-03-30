@@ -26,55 +26,52 @@ img {
     height: auto;
 }
 
-
-
 .mainNavbar{
-    width: 100%;
-    padding-top: 20px;
+    display: inline;
+    background-color: beige;
+    padding: 50px, 50px, 100, 50px;
 }
 
-
-
-nav ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
+nav ul {
+    display: inline;
+    text-align: center;
 }
 
+ul li {
+    display: inline;
+    list-style-type: none;
+}
 
-nav li {
+.divLi {
     display: inline-flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-
+    background-color: beige;
 }
-na a {
-    display: block;
+
+a {
     text-decoration: none;
-    width: 33.33%;
-
+    color: black;
 }
 
 
-#welcomeBanner {
-    background-color: whitesmoke;
-    display: flexbox;
-    
-}
+/*  WELCOME BANNER STYLE  */
 
-#bannercontent h3 img {
-    display: flex;
-    flex-direction: row;
+.welcomeBanner {
 
 }
 
-.bannerImg {
-    width: 10%;
-    height:auto;
+.bannerContent {
+
 }
 
-h3 {
-  
+.textAndImg {
+  display: flex;
+  align-items: center;
+
+}
+
+.textAndImg img {
+    height: 2.2rem;
+    margin-left: 1rem;
+    padding-right: 0px;
 }
 
