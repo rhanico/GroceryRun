@@ -7,14 +7,14 @@
 
    // my canvas variables.
 let canvas;
-let canvasWidth = 2000;
-let canvasHeight = 1894;
+let canvasWidth = 2249;
+let canvasHeight = 1200;
 let content;
 
 
   // my player variables
-let playerWidth = 528;
-let playerHeight = 947;
+let playerWidth = 352;
+let playerHeight = 631.;
 let playerX = 25;
 let playerY = canvasHeight - playerHeight;
 
@@ -30,13 +30,13 @@ let player = {                       // this create a  JS data obejects for "pla
    //my boxes variable
 let obstacleBoxes = [];              // by setting the value as an array, will make boxes spawn randomly.
 
-let boxesOneWidth = 466;
-let boxesTwoWidth = 466;             //these are the widths of boxes
-let boxesThreeWidth = 466;
+let boxesOneWidth = 233;
+let boxesTwoWidth = 233;             //these are the widths of boxes
+let boxesThreeWidth = 233;
 
-let boxesHeight = 362;               // each boxes will be sharing the height ratios.
+let boxesHeight = 181;               // each boxes will be sharing the height ratios.
 
-let boxesX = 1800;
+let boxesX = 2250;
 let boxesY = canvasHeight - boxesHeight;
 
 let boxOneImg;
@@ -44,10 +44,10 @@ let boxTwoImg;
 let boxThreeImg;
 
 //physics
-let speedX = -4;
+let speedX = -8;
 let speedY = 0;
 
-let gravity = .4;
+let gravity = .6;
 
 let gameOver = false;
 let score = 0;
@@ -99,6 +99,7 @@ window.onload = function() {
 
     requestAnimationFrame(animate);                 // this will call animate function for contents.
     setInterval(loadBoxes, 2000);                   // this will generate boxes every 1 second (1000ms = 1s)
+    document.addEventListener("keydown", playerMove);
     
     
 }
@@ -117,14 +118,14 @@ function animate() {
     if (gameOver) {
         return;
     }
-    
-    content.clearRect(
-        0,
-        0,
-        canvas.width, 
-        canvas.height
-    );
-    
+
+    content.clearRect(0, 0, canvas.width, canvas.height);
+
+    speedY += gravity;
+    player.y = Math.min(
+        player.y + speedY,                           // this will make the player not exceed ground.
+         playerY
+    );    
 
     content.drawImage(
         playerImg,
@@ -144,15 +145,27 @@ function animate() {
             boxes.width, 
             boxes.height
         );
+            if (whenColliding(player, boxes)) {
+                gameOver = true;
+                playerImg.src = "./imgGame/collided.png";
+                playerImg.onload = function(){
+                    content.drawImage(playerImg, player.x, player.y, player.width, player.height);
+                }
+            }
     }
 }
 
 function playerMove(e){
-
     if (gameOver) {
         return;
     }
+
+    if ((e.code == "Space" || e.code == "ArrowUp")&& player.y == playerY) {
+        speedY = -20;
+    }
+
 }
+
 
 
 function loadBoxes() {
@@ -197,4 +210,14 @@ function loadBoxes() {
 
 
 }
+
+function whenColliding(a, b) {
+    return a.x < b.x + b.width &&
+           a.x + a.width > b.x &&
+           a.y < b.y > b.height &&
+           a.y + a.height > b.y;
+}
+
+
+
     console.log(obstacleBoxes);
