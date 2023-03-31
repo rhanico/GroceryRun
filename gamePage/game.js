@@ -30,11 +30,11 @@ let player = {                       // this create a  JS data obejects for "pla
    //my boxes variable
 let obstacleBoxes = [];              // by setting the value as an array, will make boxes spawn randomly.
 
-let boxesOneWidth = 233;
-let boxesTwoWidth = 233;             //these are the widths of boxes
-let boxesThreeWidth = 233;
+let boxesOneWidth = 155.33;
+let boxesTwoWidth = 155.33;             //these are the widths of boxes
+let boxesThreeWidth = 155.33;
 
-let boxesHeight = 181;               // each boxes will be sharing the height ratios.
+let boxesHeight = 120.7;               // each boxes will be sharing the height ratios.
 
 let boxesX = 2250;
 let boxesY = canvasHeight - boxesHeight;
@@ -73,7 +73,7 @@ window.onload = function() {
 
 
     playerImg = new Image();                   //(1)// this will provide/creates a new value(image) for "playerImg".
-    playerImg.src ="./imgGame/player.gif";     //(2)//this will provide the source/link of the image file.
+    playerImg.src ="./imgGame/player.png";     //(2)//this will provide the source/link of the image file.
     
     playerImg.onload = function(){             //(3)// this will load and draw the "playerImg" "content" within our "canvas"
         content.drawImage(                     //(4)// by using .onload function and adding player's parameters
@@ -138,20 +138,17 @@ function animate() {
     for ( let i = 0; i < obstacleBoxes.length; i++ ) {
         let boxes = obstacleBoxes[i];
         boxes.x += speedX;
-        content.drawImage(
-            boxes.img,
-            boxes.x, 
-            boxes.y, 
-            boxes.width, 
-            boxes.height
-        );
-            if (whenColliding(player, boxes)) {
-                gameOver = true;
-                playerImg.src = "./imgGame/collided.png";
-                playerImg.onload = function(){
-                    content.drawImage(playerImg, player.x, player.y, player.width, player.height);
-                }
+        content.drawImage(boxes.img, boxes.x, boxes.y, boxes.width, boxes.height);
+
+        if (whenColliding(player, boxes)) {
+            gameOver = true;
+            playerImg.src = "./imgGame/collided.png";
+            playerImg.onload = function() {
+                content.drawImage(playerImg, player.x, player.y, player.width, player.height);
+
             }
+        }
+
     }
 }
 
@@ -184,8 +181,6 @@ function loadBoxes() {
 
     let loadRandomBox = Math.random();           //This will generate random value for "boxes" maybe every 1 sec.
 
-        console.log(loadRandomBox);
-
     if (loadRandomBox > .90) {
         boxes.img = boxThreeImg;
         boxes.width = boxesThreeWidth;
@@ -207,17 +202,13 @@ function loadBoxes() {
     if (obstacleBoxes.length > 3) {                     // this argument will limit the array lenght.
         obstacleBoxes.shift();
     }
-
-
 }
 
-function whenColliding(a, b) {
+
+
+function whenColliding(a, b,) {
     return a.x < b.x + b.width &&
            a.x + a.width > b.x &&
-           a.y < b.y > b.height &&
+           a.y < b.y + b.height &&
            a.y + a.height > b.y;
 }
-
-
-
-    console.log(obstacleBoxes);
