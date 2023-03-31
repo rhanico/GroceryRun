@@ -27,8 +27,8 @@ img {
     height: auto;
 }
 
-#mainLogo {
-    width: 100%;
+#mainLogo img{
+    width: 80%;
     height: auto;
     margin-top: 25px;
     margin-bottom: 25px;
